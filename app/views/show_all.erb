@@ -1,0 +1,6 @@
+
+<ol>
+<% @all_posts.each do |post| %>
+  <li><a href="/posts/<%= post.id %>"</a> <%= post.title %></li>
+  <% end %>
+</ol>

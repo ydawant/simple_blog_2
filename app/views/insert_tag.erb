@@ -1,0 +1,9 @@
+<h2> Please enter in the tag you would like to sort by: </h2>
+
+<form method="POST" class="find_tag" action="/find-tag">
+ <input class=<%= @tag.nil? ? 'error' : nil%> type="textarea" placeholder="Post Tag" name="tag_name"></input>
+ <% if @tag.nil? %>
+  <p>That tag does not exist</p>
+ <% end %>
+<input type="submit" name="submit"></input>
+</form>

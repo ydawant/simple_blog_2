@@ -1,0 +1,12 @@
+<h2> Edit what you like: </h2>
+
+<h3> Original Blog: </h3>
+<form method="post" action="/posts/<%= @post.id %>">
+ <input type='textarea' placeholder='Title' name='post_title' value= "<%= @post.title %>"></input>
+ <br>
+ <input type="textarea" placeholder="The Post!" name="post_body" value= "<%= @post.body %>"></input>
+ <br>
+ <input type="textarea" placeholder="Tags" name="tags" value= "<%= @tags %>"></input>
+ <br>
+<input type="submit" name="submit"></input>
+</form>
