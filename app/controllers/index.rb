@@ -5,12 +5,12 @@ end
 
 post '/user/authentication' do
   @user = User.find_by_email(params[:email])
-    if User.auth_password(@user.password) == params[:password]
-      session[:user_id] = @user.id
-      redirect "/home/#{@user.id}"
-    else
-      redirect 'error_page'
-    end
+  if User.auth_password(@user.password) == params[:password]
+    session[:user_id] = @user.id
+    redirect "/home"
+  else
+    redirect 'error_page'
+  end
 end
 
 get '/user/new_account' do
@@ -24,9 +24,13 @@ put '/user' do
   redirect "/home/#{@user.id}"
 end
 
-get '/home/:id' do
-@user = User.find_by_id(params[:id])
-erb :home
+get '/home' do
+  @user = current_user
+  erb :home
 end
 
 
+get '/logout' do
+  session.clear
+  redirect '/'
+end

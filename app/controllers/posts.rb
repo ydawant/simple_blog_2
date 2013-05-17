@@ -12,6 +12,11 @@ get '/new-post' do
   erb :new_post
 end
 
+get '/show-mine' do
+  @all_posts = Post.all
+  erb :show_mine
+end
+
 get '/tag-sort' do
   erb :insert_tag
 end
@@ -27,7 +32,7 @@ end
 delete '/posts/:id' do
   post = Post.find_by_id(params[:id])
   post.destroy 
-  redirect '/'
+  redirect '/home'
 end
 
 post '/posts/:id/edit' do
@@ -46,14 +51,14 @@ end
 
 put '/posts/:id' do
   tag_string = params[:tags]
-  p tag_names = tag_string.gsub(/\s+/, "").split(',')
+  p tag_names = tag_string.split(',').map(&:strip)
   
-  @user = User.find_by_id(params[:id])
+  @user = current_user
   tags = tag_names.map { |tag| Tag.find_or_create_by_name(tag)}
 
   Post.create(title: params[:post_title], body: params[:post_body], author: @user.username, :tags => tags)
 
-  redirect "/home/#{@user.id}"
+  redirect "/home"
 end
 
 get '/error' do

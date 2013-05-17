@@ -1,0 +1,8 @@
+
+<ol>
+<% @all_posts.each do |post| %>
+  <% if post.author == current_user.username %>
+  <li><a href="/posts/<%= post.id %>"</a> <%= post.title %></li>
+  <% end %>
+ <% end %>
+</ol>
