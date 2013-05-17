@@ -8,6 +8,7 @@ get '/specific-post' do
 end
 
 get '/new-post' do
+  @user = current_user
   erb :new_post
 end
 
@@ -19,6 +20,7 @@ get '/posts/:id' do
   @post = Post.find_by_id(params[:id])
   post_tags = PostTag.find_all_by_post_id(@post.id)
   @tag_id = post_tags.map { |post_tag| post_tag.tag_id} 
+  @user = session[:user_id]
   erb :display_post
 end
 
@@ -42,17 +44,16 @@ post '/posts/:id' do
   redirect '/'
 end
 
-put '/posts' do
+put '/posts/:id' do
   tag_string = params[:tags]
   p tag_names = tag_string.gsub(/\s+/, "").split(',')
   
-  author = "Yannick"
-
+  @user = User.find_by_id(params[:id])
   tags = tag_names.map { |tag| Tag.find_or_create_by_name(tag)}
 
-  Post.create(title: params[:post_title], body: params[:post_body], author: author, :tags => tags)
+  Post.create(title: params[:post_title], body: params[:post_body], author: @user.username, :tags => tags)
 
-  redirect '/'
+  redirect "/home/#{@user.id}"
 end
 
 get '/error' do

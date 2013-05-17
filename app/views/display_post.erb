@@ -11,7 +11,7 @@
   <li><%= Tag.find_by_id(tag).name %></li>
   <% end %>
 </ol>
-
+<% if @post.author == User.find_by_id(@user).username %>
 <form method="post" action="<%= @post.id %>/edit">
 <input type="submit" name="Edit" value="Edit Post"></input>
 </form>
@@ -20,5 +20,6 @@
   <input type="hidden" name="_method" value="delete" />
   <input type="submit" name="submit" value="Delete Post"></input>
 </form>
+<% end %>
 
 

@@ -5,13 +5,14 @@ end
 post '/find-tag' do
   @tag = Tag.find_by_name(params[:tag_name])
   if @tag
-    posts = @tag.posts
-    @post_names = posts.map(&:title)
+    @posts = @tag.posts
     erb :show_tag
   else
     erb :insert_tag
   end
 end
+
+#test 
 
 
 

@@ -1,8 +1,8 @@
 
 <ol>
-<% @post_names.each do |post| %>
+<% @posts.each do |post| %>
     <% if post != nil %>
-      <li><%= post %></li>
+      <li><a href="/posts/<%=post.id%>"</a><%= post.title %></li>
     <% end %>
   <% end %>
 </ol>
