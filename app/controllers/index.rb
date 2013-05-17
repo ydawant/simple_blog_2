@@ -5,11 +5,11 @@ end
 
 post '/user/authentication' do
   @user = User.find_by_email(params[:email])
-  if User.auth_password(@user.password) == params[:password]
+  if @user && User.auth_password(@user.password) == params[:password]
     session[:user_id] = @user.id
     redirect "/home"
   else
-    redirect 'error_page'
+    redirect '/'
   end
 end
 
@@ -21,7 +21,7 @@ put '/user' do
   inputs = {:username => params[:username], :new_password => params[:new_password], :email => params[:email]}
   @user = User.new(inputs)
   @user.save
-  redirect "/home/#{@user.id}"
+  redirect "/home"
 end
 
 get '/home' do

@@ -1,13 +1,18 @@
 <h2> Awesome! Write your little heart out: </h2>
 
 <h3> New Blog Post: </h3>
-<form method="post" action="/posts/<%= @user.id%>">
+<div class = "new-input">
+
+<form method="post" id="new_form" action="/posts/<%= @user.id%>">
   <input type= "hidden" name="_method" value="put" />
- <input type="text" placeholder="Title" name="post_title" />
- <br>
- <textarea name="post_body">The Post!</textarea>
- <br>
- <input type="text" placeholder="Tags" name="tags" />
- <br>
+  <input type="textarea" placeholder="Title" name="post_title" />
+  <br><br>
+  <textarea rows="4" cols="50" placeholder="The Post!" name ="post_body"></textarea>
+  <br><br>
+  <input type="text" placeholder="Tags" name="tags" />
+  <br>
 <input type="submit" name="submit"></input>
 </form>
+
+</div>
+

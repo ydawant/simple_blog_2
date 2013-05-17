@@ -1,9 +1,95 @@
+
+
+body {
+   background: url("../img/rough_diagonal.png");
+}
+
 .container {
-  margin: 20px auto;
+  text-align: left;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  
 }
 th {
   text-align: left;
 }
+
+.header a {
+  text-decoration: none;
+    color: #EB4B4B;
+}
+.header {
+  text-align: left;
+  font-family: palatino;
+  background: url("../img/debut_dark.png");
+  margin-top: 0px;
+  padding-top:10px;
+  padding-bottom: 10px; 
+  font-size: 50px;
+
+  -moz-box-shadow: 0 0 30px 10px #999;
+  -webkit-box-shadow: 0 0 30px 10px #999;
+  box-shadow: 0 0 30px 10px #999;
+}
+
+.logout {
+  float: right;
+  margin-top: 23px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+h2 {
+  font-size: 35px;
+  font-family: palatino;
+}
+
+h3 {
+  font-size:30px;
+  font-family: palatino;
+}
+
+ul {
+  list-style-type: none;
+}
+ul a {
+  text-decoration: none;
+  list-style-type: none;
+  line-height: 25px;
+  color: black;
+
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+  line-height: 80px;
+  border: 5px solid white;
+  -webkit-box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+        0 0 16px rgba(0,0,0,0.1);
+  -moz-box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+        0 0 16px rgba(0,0,0,0.1);
+  box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+        0 0 16px rgba(0,0,0,0.1);
+  padding: 15px;
+  background: rgba(255,255,255,0.5);
+  margin: 0 0 10px 0;
+}
+
+
+.new_input {
+    height:auto; 
+    margin:0 auto; 
+    border:1px solid blue;
+}
+
+#new_form{
+    border:1px;
+    width:50%; 
+    margin:0 auto;
+}
+

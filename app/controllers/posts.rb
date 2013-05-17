@@ -51,8 +51,8 @@ end
 
 put '/posts/:id' do
   tag_string = params[:tags]
-  p tag_names = tag_string.split(',').map(&:strip)
-  
+  tag_names = tag_string.split(',').map(&:strip)
+  puts params.inspect
   @user = current_user
   tags = tag_names.map { |tag| Tag.find_or_create_by_name(tag)}
 
