@@ -3,13 +3,19 @@ get '/tag-sort' do
 end
 
 post '/find-tag' do
-  @tag = Tag.find_by_name(params[:tag_name])
+  @tag = Tag.find_by_name(params[:tag_name]) 
   if @tag
     @posts = @tag.posts
     erb :show_tag
   else
     erb :insert_tag
   end
+end
+
+get '/find-tag/:tag' do
+  @tag = Tag.find_by_name(params[:tag])
+  @posts = @tag.posts
+  erb :show_tag
 end
 
 #test 

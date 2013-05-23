@@ -18,6 +18,7 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'bcrypt-ruby'
+gem 'will_paginate', '~> 3.0.0'
 
 group :test do
   gem 'faker'

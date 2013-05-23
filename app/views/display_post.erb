@@ -1,25 +1,26 @@
-<h2> Here is the post </h2>
 
-<%= @post.title %>
+<h3> Title: <%= @post.title %> </h3>
+<h3> Author: <%= @post.author %></h3>
 <br>
-<%= @post.author %>
+<p id="post_body"><%= @post.body %></p>
 <br>
-<%= @post.body %>
-<br>
-<ol>
-<% @tag_id.each do |tag| %>
-  <li><%= Tag.find_by_id(tag).name %></li>
+<ol id="tags">
+  <p> Tags: </p>
+  <% @tag_id.each do |tag| %>
+  <li><a href="../find-tag/<%=Tag.find_by_id(tag).name%>"><%= Tag.find_by_id(tag).name %></a></li>
   <% end %>
 </ol>
 <% if @post.author == current_user.username %>
-<form method="post" action="<%= @post.id %>/edit">
-<input type="submit" name="Edit" value="Edit Post"></input>
-</form>
+<div id="edit_delete">
+  <form method="post" class = "edit_button" action="<%= @post.id %>/edit">
+    <input type="submit" name="Edit" value="Edit Post"></input>
+  </form>
 
-<form method="post" class="delete" action="/posts/<%= @post.id %>">
-  <input type="hidden" name="_method" value="delete" />
-  <input type="submit" name="submit" value="Delete Post"></input>
-</form>
+  <form method="post" class="delete_button" action="/posts/<%= @post.id %>">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" name="submit" value="Delete Post"></input>
+  </form>
+</div>
 <% end %>
 
 

@@ -23,6 +23,9 @@ end
 
 get '/posts/:id' do
   @post = Post.find_by_id(params[:id])
+
+  # @post.tags << Tag.create()
+
   post_tags = PostTag.find_all_by_post_id(@post.id)
   @tag_id = post_tags.map { |post_tag| post_tag.tag_id} 
   @user = session[:user_id]
@@ -43,19 +46,19 @@ post '/posts/:id/edit' do
   erb :edit_post
 end
 
-post '/posts/:id' do
+put '/posts/:id' do
   post = Post.find_by_id(params[:id])
   post.update_attributes(title: params[:post_title], body: params[:post_body], :tags => Tag.from_string(params[:tags]))
   redirect '/'
 end
 
-put '/posts/:id' do
+post '/posts/:id' do
   tag_string = params[:tags]
   tag_names = tag_string.split(',').map(&:strip)
   puts params.inspect
   @user = current_user
-  tags = tag_names.map { |tag| Tag.find_or_create_by_name(tag)}
-
+  @user.tags = tag_names.map { |tag| Tag.find_or_create_by_name(tag)}
+# @user.tags << Tag.
   Post.create(title: params[:post_title], body: params[:post_body], author: @user.username, :tags => tags)
 
   redirect "/home"

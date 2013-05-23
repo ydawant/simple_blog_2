@@ -21,6 +21,7 @@ put '/user' do
   inputs = {:username => params[:username], :new_password => params[:new_password], :email => params[:email]}
   @user = User.new(inputs)
   @user.save
+  session[:user_id]=@user.id
   redirect "/home"
 end
 

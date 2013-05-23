@@ -5,13 +5,13 @@
 
 <form method="post" id="new_form" action="/posts/<%= @user.id%>">
   <input type= "hidden" name="_method" value="put" />
-  <input type="textarea" placeholder="Title" name="post_title" />
+  <input type= "text" placeholder="Title" name="post_title" />
   <br><br>
-  <textarea rows="4" cols="50" placeholder="The Post!" name ="post_body"></textarea>
+  <textarea rows="20" id="text_area" cols="60" style="border:none" placeholder="The Post!" name ="post_body"></textarea>
   <br><br>
   <input type="text" placeholder="Tags" name="tags" />
   <br>
-<input type="submit" name="submit"></input>
+<input type="submit" id="new_submit" name="submit"></input>
 </form>
 
 </div>
